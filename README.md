@@ -4,13 +4,13 @@ Agent skills for Midmap.
 
 ## Install
 
-Install the Midmap skill for Codex with:
+Install the Midmap skill for your coding agent with:
 
 ```bash
-npx skills add midmap-app/skills --skill midmap --global --agent codex
+npx skills add midmap-app/skills --skill midmap --global
 ```
 
-The repository is compatible with other agents supported by the `skills` CLI. Replace `--agent codex` with the target agent when needed.
+The `skills` CLI supports multiple coding agents. Add `--agent <agent>` when you want to target a specific agent, or let the CLI detect available agents.
 
 ## Prerequisites
 
