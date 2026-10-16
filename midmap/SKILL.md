@@ -10,3 +10,5 @@ Before each Midmap tool call, call `midmap_get_current_context` to retrieve the 
 If the user asks to organize information in Midmap and it has no clear connection to the current board, ask whether they want to create a new board before adding it.
 
 If Midmap MCP is not installed or unavailable, explain that accurately and guide the user to add the MCP configuration. Do not claim to have retrieved or changed board data.
+
+When users ask how to use Midmap or ask related questions, consult the official website before answering: [English](https://midmap.app/) and [Chinese](https://midmap.app/cn/).
