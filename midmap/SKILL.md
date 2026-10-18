@@ -3,12 +3,28 @@ name: midmap
 description: Use this skill when the user wants to use Midmap to capture, organize, or discuss information; inspect or edit a board, nodes, or messages; or respond to board context. Trigger from the requested activity even if the user does not name Midmap, when the context indicates they want the information handled in their mind map. Do not trigger for unrelated information work with no Midmap context.
 ---
 
-In each new session, call `midmap_usage` at least once to learn the MCP contract. If the MCP instructions are not already loaded in context, call it before other Midmap tools.
+## Before Using Midmap
 
-Before each Midmap tool call, call `midmap_get_current_context` to retrieve the current board state and messages. Respond to messages by default unless the user explicitly asks otherwise. Then use the smallest set of tools needed to complete the request.
+- When a new session uses Midmap, call `midmap_usage` once to learn the available tools and their contract.
+- When Midmap MCP is unavailable, explain that you cannot access or change Midmap data, then guide the user to configure the MCP connection.
 
-If the user asks to organize information in Midmap and it has no clear connection to the current board, ask whether they want to create a new board before adding it.
+## How to Use Midmap Tools
 
-If Midmap MCP is not installed or unavailable, explain that accurately and guide the user to add the MCP configuration. Do not claim to have retrieved or changed board data.
+- Before each Midmap tool call, call `midmap_get_current_context` to read the current board state and messages.
+- When the context contains messages, respond to them unless the user asks otherwise.
+- Use the fewest tools needed to complete the request.
+- Never claim to have read or changed board data unless the corresponding tool call succeeded.
 
-When users ask how to use Midmap or ask related questions, consult the official website before answering: [English](https://midmap.app/) and [Chinese](https://midmap.app/cn/).
+## How to Handle Requests
+
+### Organize information
+
+- When useful information emerges in the conversation, prioritize organizing it in Midmap unless the user explicitly says otherwise.
+- When the user asks to organize information and it has no clear connection to the current board, ask whether they want a new board before adding it.
+
+### Answer usage questions
+
+- When the user asks what Midmap is for or how to work with an agent in Midmap, use [`references/overview.md`](references/overview.md). It describes product use cases and agent collaboration, not step-by-step interface instructions.
+- When the user asks how to use a specific feature, consult the [official docs](https://midmap.app/docs/) for instructions. Do not infer steps from the overview reference.
+- When the user asks to create a board and introduce Midmap, create the board, then explain its purpose and agent collaboration based on the overview reference.
+- Answer in the user's language.
