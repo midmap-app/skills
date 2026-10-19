@@ -1,17 +1,19 @@
 ---
 name: midmap
-description: Use this skill when the user wants to use Midmap to capture, organize, or discuss information; inspect or edit a board, nodes, or messages; or respond to board context. Trigger from the requested activity even if the user does not name Midmap, when the context indicates they want the information handled in their mind map. Do not trigger for unrelated information work with no Midmap context.
+description: Use this skill when the user wants to use Midmap to capture, organize, or discuss information; inspect or edit a board, nodes, or messages; or respond to board context. 
 ---
 
-## Before Using Midmap
+## On first use
 
 - When a new session uses Midmap, call `midmap_usage` once to learn the available tools and their contract.
 - When Midmap MCP is unavailable, explain that you cannot access or change Midmap data, then guide the user to configure the MCP connection.
 
-## How to Use Midmap Tools
+## In conversation
 
-- Before each Midmap tool call, call `midmap_get_current_context` to read the current board state and messages.
+- When handling a user request, call `midmap_get_current_context` first to read the current board state and messages.
 - When the context contains messages, respond to them unless the user asks otherwise.
+  - discuss: the message should be replied in conversation, this is not a command.
+  - command: the message should be executed. execute by default.
 - Use the fewest tools needed to complete the request.
 - Never claim to have read or changed board data unless the corresponding tool call succeeded.
 
